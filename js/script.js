@@ -53,6 +53,7 @@ const deleteTodo = (key) => {
 };
 
 const renderTodo = (todo) => {
+  localStorage.setItem("todoRef", JSON.stringify(todoList));
   const node = document.createElement("li");
   const item = document.querySelector(`[data-key="${todo.id}"]`);
   const isCheked = todo.checked ? "done" : "";
@@ -78,3 +79,12 @@ const renderTodo = (todo) => {
     list.append(node);
   }
 };
+window.addEventListener("DOMContentLoaded", () => {
+  const ref = localStorage.getItem("todoRef");
+  if (ref) {
+    todoList = JSON.parse(ref);
+    todoList.forEach((task) => {
+      renderTodo(task);
+    });
+  }
+});
