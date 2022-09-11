@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&family=Roboto:wght@300;400;700;900&display=swap')
+*
+    font-family: 'Roboto', sans-serif
+    font-family: 'Roboto Condensed', sans-serif
+
+html
+    box-sizing: border-box
+body
+    background-color: #37AEE2
+main
+    width: 600px
+    min-height: 200px
+    margin: 60px auto
+    border: 1px solid black
+    padding: 20px 20px
+    background-color: #ffff
+.container
+    max-width: 400px
+    margin: 0 auto
+.app-title
+    text-align: center
+    font-weight: 700
+    text-transform: uppercase
+
+.js-form
+    margin: 0 auto
+    width: 100%
+    display: flex
+    justify-content: space-between
+
+.js-input
+    width: 230px
+    border: 2px solid #14b0db
+    padding: 5px
+    border-radius: .5rem
+    &:hover
+        border: 2px solid #5ed7f8
+
+.button-43
+    background-image: linear-gradient(-180deg, #37AEE2 0%, #1E96C8 100%)
+    border-radius: .5rem
+    color: #FFFFFF
+    display: flex
+    font-size: 16px
+    justify-content: center
+    padding: 5px
+    text-decoration: none
+    width: 100px
+    border: 0
+    cursor: pointer
+    touch-action: manipulation
+
+.button-43:hover
+    background-image: linear-gradient(-180deg, #1D95C9 0%, #17759C 100%)
+
+.todo-list
+    list-style-type: none
+    margin-bottom: 10px
+    padding-inline-start: 0
+
+    .todo-item
+        margin-bottom: 10px
+        width: 100%
+        display: flex
+        align-items: center
+        justify-content: space-between
+    .todo-item  span
+        flex-grow: 1
+        font-size: 22px
+        margin-left: 5px
+    .todo-item button
+        background-image: linear-gradient(-180deg, #5ee1ec 0%, #1E96C8 100%)
+        border-radius: .5rem
+        color: #FFFFFF
+        display: flex
+        font-size: 16px
+        justify-content: center
+        padding: 5px
+        text-decoration: none
+        width: 100px
+        border: 0
+        cursor: pointer
+        touch-action: manipulation
+
+        &:hover
+            background-image: linear-gradient(-180deg, #1D95C9 0%, #17759C 100%)
+
+    .todo-item input[type="checkbox"]
+        display: none
+
+    .tick
+        width: 10px
+        height: 10px
+        margin-top: 4px
+        border: 2px solid #17759C
+        border-radius: 50%
+        display: inline-flex
+        justify-content: center
+        align-items: center
+        cursor: pointer
+
+        &:before
+            content: '✓'
+            font-size: 10px
+            font-weight: 700
+            display: none
+
+    .done .tick::before
+        display: block
+
+    .done span
+        text-decoration: line-through
