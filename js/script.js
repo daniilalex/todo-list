@@ -6,6 +6,7 @@ let todoList = [];
 const addTodo = (text) => {
   const todo = {
     text,
+    checked: false,
     id: Date.now(),
   };
   console.log(todoList);
@@ -29,7 +30,17 @@ list.addEventListener("click", (e) => {
     const itemKey = e.target.parentElement.dataset.key;
     deleteTodo(itemKey);
   }
+  if (e.target.classList.contains("js-tick")) {
+    const itemKey = e.target.parentElement.dataset.key;
+    toggleCheckBox(itemKey);
+  }
 });
+
+const toggleCheckBox = (key) => {
+  const index = todoList.findIndex((el) => el.id === Number(key));
+  todoList[index].checked = !todoList[index].checked;
+  renderTodo(todoList[index]);
+};
 
 const deleteTodo = (key) => {
   const index = todoList.findIndex((el) => el.id === Number(key));
@@ -44,6 +55,7 @@ const deleteTodo = (key) => {
 const renderTodo = (todo) => {
   const node = document.createElement("li");
   const item = document.querySelector(`[data-key="${todo.id}"]`);
+  const isCheked = todo.checked ? "done" : "";
   console.log(item);
 
   if (todo.deleted) {
@@ -52,10 +64,17 @@ const renderTodo = (todo) => {
   }
 
   node.setAttribute("data-key", todo.id);
+  node.setAttribute("class", `todo-item ${isCheked}`);
 
   node.innerHTML = `
+  <input type = "checkbox" id = "${todo.id}"/>
+  <label for = "${todo.id}" class = "tick js-tick""></label>
 <span>${todo.text}</span>
-<button class = "js-delete">remove</button>
+<button class = "js-delete btn-43">remove</button>
 `;
-  list.append(node);
+  if (item) {
+    list.replaceChild(node, item);
+  } else {
+    list.append(node);
+  }
 };
